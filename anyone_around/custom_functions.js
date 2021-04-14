@@ -1,5 +1,6 @@
+// Gradient for getting the colors of anyone around markers
 var Gradient = require("javascript-color-gradient");
-
+// function to get the hex color values based on the pedestrain count
 var getGradient = (value, max, total) => {
   const colorGradient = new Gradient();
   colorGradient.setGradient("#cc2121", "#f5ea14", "#2ea630");
@@ -7,7 +8,7 @@ var getGradient = (value, max, total) => {
   var color = colorGradient.getColor(parseInt(value * 100 / total) + 1);
   return (color);
 }
-
+// function to map the traffic level to pedestrain_Count
 var getTrafficLevel = (sum, val) => {
   const perc = val / sum
   if (perc <= .01) return ("low");
@@ -15,7 +16,7 @@ var getTrafficLevel = (sum, val) => {
   else return ("high");
 
 }
-
+// creaitng the expected json file according to the front end needs
 exports.modify_result = (sensors) => {
   // get total sum of pedestrian count in each sensor
   Total = sensors[0].reduce(function(accumulator, currentValue) {
@@ -29,18 +30,18 @@ exports.modify_result = (sensors) => {
   var color_list = [];
   var res_list = [];
   sensors[0].forEach((item, i) => {
+    // json response
     res_list[i] = {
       "latlng": {
         "latitude": item.lattitude,
         "longitude": item.longitude
       },
-      "title": item.place,
-      "description": {
-        "value": item.pedestrian_count,
-        "place": item.place,
-        "level": getTrafficLevel(Total, item.pedestrian_count),
-      },
+      "value": parseInt(item.pedestrian_count),
+      "place": item.place,
+      "level": getTrafficLevel(Total, item.pedestrian_count),
       "tintColor": getGradient(item.pedestrian_count, max, Total),
+      "duration": null,
+      "distance": null
     }
   });
 
