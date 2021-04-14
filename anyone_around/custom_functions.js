@@ -11,9 +11,9 @@ var getGradient = (value, max, total) => {
 // function to map the traffic level to pedestrain_Count
 var getTrafficLevel = (sum, val) => {
   const perc = val / sum
-  if (perc <= .01) return ("low");
-  else if (perc <= .03) return ("moderate");
-  else return ("high");
+  if (perc <= .01) return ("LOW");
+  else if (perc <= .03) return ("MODERATE");
+  else return ("HIGH");
 
 }
 // creaitng the expected json file according to the front end needs
