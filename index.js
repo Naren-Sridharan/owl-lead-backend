@@ -21,7 +21,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // create sensor routes
-app.use('/anyone_around' , sensorRoutes);
+app.use('/' , sensorRoutes);
 
 //defining root route
 app.get("/", (req, res) => {

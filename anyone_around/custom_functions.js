@@ -19,17 +19,17 @@ var getTrafficLevel = (sum, val) => {
 // creaitng the expected json file according to the front end needs
 exports.modify_result = (sensors) => {
   // get total sum of pedestrian count in each sensor
-  Total = sensors[0].reduce(function(accumulator, currentValue) {
+  Total = sensors.reduce(function(accumulator, currentValue) {
     return accumulator + parseInt(currentValue.pedestrian_count);
   }, 0);
   // get max and min ped count
-  max = Math.max.apply(Math, sensors[0].map(function(o) {
+  max = Math.max.apply(Math, sensors.map(function(o) {
     return o.pedestrian_count;
   }))
   // min = Math.min.apply(Math, sensors[0].map(function(o) { return o.pedestrian_count; }))
   var color_list = [];
   var res_list = [];
-  sensors[0].forEach((item, i) => {
+  sensors.forEach((item, i) => {
     // json response
     res_list[i] = {
       "latlng": {
@@ -40,6 +40,7 @@ exports.modify_result = (sensors) => {
       "place": item.place,
       "level": getTrafficLevel(Total, item.pedestrian_count),
       "tintColor": getGradient(item.pedestrian_count, max, Total),
+      'time':item.time,
       "duration": null,
       "distance": null
     }
