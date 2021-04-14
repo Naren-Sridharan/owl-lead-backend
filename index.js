@@ -2,7 +2,7 @@
 const express = require('express');
 const bodyParser = require("body-parser");
 // getting routes for anyone around
-// const sensorRoutes = require("./anyone_around/routes/sensorRouter")
+const sensorRoutes = require("./anyone_around/routes/sensorRouter")
 // getting express instance
 const app = express();
 
@@ -21,16 +21,16 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // create sensor routes
-// app.use('/sensors' , sensorRoutes);
+app.use('/anyone_around' , sensorRoutes);
 
 //defining root route
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to VynlX application." });
+  res.json({ message: "You have reached root address of owllead backend " });
 });
 
 
 
-
+// heath check
 app.get('/health_check', (request, response) => {
     var package_json = require('./package.json');
     var results = {
