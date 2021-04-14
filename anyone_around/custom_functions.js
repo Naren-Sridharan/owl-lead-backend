@@ -17,6 +17,7 @@ var getTrafficLevel = (sum, val) => {
 }
 
 exports.modify_result = (sensors) => {
+  console.log(sensors)
   // get total sum of pedestrian count in each sensor
   Total = sensors[0].reduce(function(accumulator, currentValue) {
     return accumulator + parseInt(currentValue.pedestrian_count);
@@ -42,7 +43,6 @@ exports.modify_result = (sensors) => {
       },
       "tintColor": getGradient(item.pedestrian_count, max, Total),
     }
-    // color_list[i] = getGradient(item.pedestrian_count, max, Total)
   });
 
 

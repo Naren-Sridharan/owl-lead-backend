@@ -5,11 +5,10 @@ var con = mysql.createConnection({
   "host" : db_cred.host,
   "user" : db_cred.user,
   "password" : db_cred.password,
-  "database" : db_cred.databse,
+  "database" : db_cred.database,
   "multipleStatements": true
 });
 
-console.log(db_cred)
 con.connect((err) => {
   if (err) throw err;
   console.log("Connected to the Database!");
