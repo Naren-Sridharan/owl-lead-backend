@@ -5,6 +5,6 @@ const controller = require('../controllers/sensorController.js')
 // initializing router object
 const router = express.Router();
 // defining the route for get request
-router.get('/anyone_around',controller.getData);
+router.get('/pedestrian_counts',controller.getData);
 
 module.exports = router ;

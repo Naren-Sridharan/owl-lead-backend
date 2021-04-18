@@ -32,6 +32,7 @@ exports.modify_result = (sensors) => {
   sensors.forEach((item, i) => {
     // json response
     res_list[i] = {
+      "id" : item.sensor_id,
       "latlng": {
         "latitude": item.lattitude,
         "longitude": item.longitude
