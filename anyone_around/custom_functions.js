@@ -14,8 +14,16 @@ var getTrafficLevel = (sum, val) => {
   if (perc <= .01) return ("LOW");
   else if (perc <= .03) return ("MODERATE");
   else return ("HIGH");
-
 }
+
+// function to change the date format
+var GetTime = (time) => {
+  var date = new Date(time);
+  var localeSpecificTime = date.toLocaleTimeString();
+  return localeSpecificTime.replace(/:\d+ /, ' ');
+}
+
+
 // creaitng the expected json file according to the front end needs
 exports.modify_result = (sensors) => {
   // get total sum of pedestrian count in each sensor
@@ -41,7 +49,7 @@ exports.modify_result = (sensors) => {
       "place": item.place,
       "level": getTrafficLevel(Total, item.pedestrian_count),
       "tintColor": getGradient(item.pedestrian_count, max, Total),
-      'time':item.time,
+      'time':GetTime(item.time),
       "duration": null,
       "distance": null
     }
