@@ -12,7 +12,9 @@ exports.findAll = (req, res) => {
           });
         else {
           console.log("stations request successful");
-          res.send(f1.modify_station(data));
+          var modified = f1.modify_station(data) //modify to json 
+          var filtered = f1.filter_station(modified)   //filter based on frontend needs
+          res.send(filtered);
         }
     });
   

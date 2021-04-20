@@ -20,4 +20,20 @@ exports.modify_station = (stations) => {
 
   return (res_list)
 }
+
+
+
+const geolib = require('geolib');
+
+exports.filter_station = (stations) => {
+  var filtered_stations = stations.filter(function(station){
+    return geolib.isPointWithinRadius(
+      station.latlng,
+      { latitude: -37.8138, longitude: 144.9578 },
+      5000
+    ) == true;
+  });
+  return filtered_stations;
+}
+
   
