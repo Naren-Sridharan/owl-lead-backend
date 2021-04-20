@@ -1,4 +1,4 @@
 pandas
 pytz==2020.1
 sodapy==2.1.0
-mysql_connector_repackaged==0.3.1
+mysql_connector
