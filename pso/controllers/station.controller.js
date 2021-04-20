@@ -1,4 +1,6 @@
 const Station = require("../models/station.model.js");
+const f1 = require("../function.js");
+
 
 // Retrieve all Stations.
 exports.findAll = (req, res) => {
@@ -8,8 +10,11 @@ exports.findAll = (req, res) => {
             message:
               err.message || "Some error occurred while retrieving stations."
           });
-        else res.send(data);
-      });
+        else {
+          console.log("stations request successful");
+          res.send(f1.modify_station(data));
+        }
+    });
   
 };
 

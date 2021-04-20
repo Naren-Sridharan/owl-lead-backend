@@ -12,8 +12,8 @@ Station.findById = (station_id, result) => {
       }
   
       if (res.length) {
-        console.log("found station: ", res[0]);
-        result(null, res[0]);
+        console.log("found station: ", res);
+        result(null, res);
         return;
       }
   
@@ -30,7 +30,7 @@ Station.findById = (station_id, result) => {
         return;
       }
   
-      console.log("stations: ", res);
+      console.log("got the stations");
       result(null, res);
     });
   };
