@@ -1,4 +1,4 @@
-const sql = require("./db.js");
+const sql = require("../../db_config/db_connect.js");
 
 // Stations constructor
 var Station = (station) => {}

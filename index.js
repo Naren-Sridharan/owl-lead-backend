@@ -3,6 +3,9 @@ const express = require('express');
 const bodyParser = require("body-parser");
 // getting routes for anyone around
 const sensorRoutes = require("./anyone_around/routes/sensorRouter")
+//get routes for pso
+const stationRoutes = require("./pso/routes/station.routes.js")
+
 // getting express instance
 const app = express();
 
@@ -22,6 +25,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // create sensor routes
 app.use('/' , sensorRoutes);
+// create station routes
+app.use('/' , stationRoutes);
+
 
 //defining root route
 app.get("/", (req, res) => {
