@@ -10,7 +10,7 @@ import datetime
 
 def connect_db():
     try :
-        data = open("DB_config.txt","r").read()
+        data = open("/Sql_pyscripts/DB_config.txt","r").read()
         data = json.loads(data)
     except :
         print("could not read DB_config,txt file")
