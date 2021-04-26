@@ -10,7 +10,7 @@ const stationRoutes = require("./pso/routes/station.routes.js")
 const app = express();
 
 // defining the port
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 
 // initializing the express server
 app.listen(PORT, () => {
@@ -35,7 +35,6 @@ app.get("/", (req, res) => {
 });
 
 
-
 // heath check
 app.get('/health_check', (request, response) => {
     var package_json = require('./package.json');
@@ -43,7 +42,7 @@ app.get('/health_check', (request, response) => {
       isSuccess: true,
       message: 'Server Running',
       version: package_json.version,
-      port: 3000
+      port: process.env.PORT
     };
     response.status(200).send(results);
   });

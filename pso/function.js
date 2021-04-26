@@ -1,4 +1,4 @@
-// create the expected station json file according to the front end 
+// create the expected station json file according to the front end
 var res_list = [];
 
 exports.modify_station = (stations) => {
@@ -30,10 +30,8 @@ exports.filter_station = (stations) => {
     return geolib.isPointWithinRadius(
       station.latlng,
       { latitude: -37.8138, longitude: 144.9578 },
-      5000
+      10000
     ) == true;
   });
   return filtered_stations;
 }
-
-  

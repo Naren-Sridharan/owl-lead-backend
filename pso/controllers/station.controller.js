@@ -12,12 +12,14 @@ exports.findAll = (req, res) => {
           });
         else {
           console.log("stations request successful");
-          var modified = f1.modify_station(data) //modify to json 
-          var filtered = f1.filter_station(modified)   //filter based on frontend needs
+          var modified = f1.modify_station(data) //modify to json
+          console.log(data)
+          var filtered = f1.filter_station(modified)
+          console.log(filtered)  //filter based on frontend needs
           res.send(filtered);
         }
     });
-  
+
 };
 
 // Find a single station with station_id
@@ -35,5 +37,5 @@ exports.findOne = (req, res) => {
           }
         } else res.send(data);
       });
-  
+
 };
