@@ -11,7 +11,7 @@ exports.modify_station = (stations) => {
         "longitude": item.longitude
       },
       "place": item.station_name,
-      "level": 'LOW',
+      "level": (isDay())? item.day_level : item.night_level,
       "duration": null,
       "distance": null
     }
@@ -34,6 +34,11 @@ exports.filter_station = (stations) => {
     ) == true;
   });
   return filtered_stations;
+}
+
+function isDay() {
+  const hours = (new Date()).getHours();
+  return (hours >= 6 && hours < 21);  //set day start from 6am to 9pm 
 }
 
   
