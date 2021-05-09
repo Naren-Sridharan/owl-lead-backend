@@ -1,7 +1,15 @@
+// Gradient for getting the colors of anyone around markers
+var Gradient = require("javascript-color-gradient");
+// function to get the hex color values based on the pedestrain count
+var getGradient = (value, max, total) => {
+  const colorGradient = new Gradient();
+  colorGradient.setGradient("#cc2121", "#f5ea14", "#2ea630");
+  colorGradient.setMidpoint(parseInt(max * 100 / total));
+  var color = colorGradient.getColor(parseInt(value * 100 / total) + 1);
+  return (color);
+}
 // function to map the traffic level to pedestrain_Count
-var funcs = () => {} ;
-
-funcs.getTrafficLevel = (sum, val) => {
+var getTrafficLevel = (sum, val) => {
   const perc = val / sum
   if (perc <= .01) return ("LOW");
   else if (perc <= .03) return ("MODERATE");
@@ -9,7 +17,7 @@ funcs.getTrafficLevel = (sum, val) => {
 }
 
 // function to change the date format
-funcs.GetTime = (time) => {
+var GetTime = (time) => {
   var date = new Date(time);
   var localeSpecificTime = date.toLocaleTimeString();
   return localeSpecificTime.replace(/:\d+ /, ' ');
@@ -17,7 +25,7 @@ funcs.GetTime = (time) => {
 
 
 // creaitng the expected json file according to the front end needs
-funcs.modify_result = (sensors) => {
+exports.modify_result = (sensors) => {
   // get total sum of pedestrian count in each sensor
   Total = sensors.reduce(function(accumulator, currentValue) {
     return accumulator + parseInt(currentValue.pedestrian_count);
@@ -39,9 +47,9 @@ funcs.modify_result = (sensors) => {
       },
       "value": parseInt(item.pedestrian_count),
       "place": item.place,
-      "level": funcs.getTrafficLevel(Total, item.pedestrian_count),
-      "tintColor": null,
-      'time':funcs.GetTime(item.time),
+      "level": getTrafficLevel(Total, item.pedestrian_count),
+      "tintColor": getGradient(item.pedestrian_count, max, Total),
+      'time':GetTime(item.time),
       "duration": null,
       "distance": null
     }
@@ -50,5 +58,3 @@ funcs.modify_result = (sensors) => {
 
   return (res_list)
 }
-
-module.exports  = funcs;
