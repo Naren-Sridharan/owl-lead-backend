@@ -30,7 +30,7 @@ exports.filter_station = (stations) => {
     return geolib.isPointWithinRadius(
       station.latlng,
       { latitude: -37.8138, longitude: 144.9578 },
-      5000
+      3000
     ) == true;
   });
   return filtered_stations;
