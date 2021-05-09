@@ -37,7 +37,7 @@ exports.filter_station = (stations) => {
 }
 
 function isDay() {
-  const hours = (new Date()).getHours();
+  var hours = new Date((new Date()).toLocaleString("en-US", {timeZone: "Australia/Sydney"})).getHours();
   return (hours >= 7 && hours < 18);  //set day start from 7 till 5
 }
 
