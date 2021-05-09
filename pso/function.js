@@ -38,7 +38,6 @@ exports.filter_station = (stations) => {
 
 function isDay() {
   const hours = (new Date()).getHours();
-  return (hours >= 6 && hours < 21);  //set day start from 6am to 9pm 
+  return (hours >= 7 && hours < 18);  //set day start from 7 till 5
 }
 
-  
