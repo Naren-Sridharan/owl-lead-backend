@@ -1,4 +1,4 @@
-// create the expected station json file according to the front end 
+// create the expected station json file according to the front end
 var res_list = [];
 
 exports.modify_station = (stations) => {
@@ -40,4 +40,3 @@ function isDay() {
   var hours = new Date((new Date()).toLocaleString("en-US", {timeZone: "Australia/Sydney"})).getHours();
   return (hours >= 7 && hours < 18);  //set day start from 7 till 5
 }
-
